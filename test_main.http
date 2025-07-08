@@ -1,0 +1,32 @@
+###
+GET http://127.0.0.1:8000/address/by_label/Puppy
+
+###
+GET http://127.0.0.1:8000/get_balance/1
+
+###
+GET http://127.0.0.1:8000/create_address/Dog
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/create_address/Puppy
+Accept: application/json
+
+
+###
+GET http://127.0.0.1:8000/accounts/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/transfer/ HTTP/1.1
+Content-Type: application/json
+
+
+{
+  "subaddr_index": 0,
+  "dest_address": "BcxGEgVzNFvVmX6LJyXDYG5cgRqTS4eKeKi1wPGyGkmB8gZTSwtdvDJDAY4ViwRHYUSi3usjr1oqgA5Bx7V94Vy2LJ5kCdZ",
+  "amount": 5,
+  "priority": 4
+}
+
+
