@@ -18,6 +18,7 @@ async def root():
 async def accounts():
     return w.list_subaddresses()
 
+
 @router.get("/create_address/{label}")
 async def create_address(label: str):
     return w.create_address(label=label)

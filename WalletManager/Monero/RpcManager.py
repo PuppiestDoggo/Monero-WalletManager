@@ -64,17 +64,18 @@ class WalletRPC:
 
         return simplified
 
-    def transfer(self, subaddr_index, destination, amount, priority=0):        # Validate priority
+    def transfer(self, subaddr_index, destination, amount, priority=0):
         if priority not in range(0, 5):
             raise ValueError("Priority must be between 0-4")
 
         payload = {
             "jsonrpc": "2.0",
             "id": "0",
-            "method": "transfer",
+            "method": "transfer_split",
             "params": {
                 "destinations": [{
-                    "amount": int(amount * 1e12),  # Monero uses atomic units (piconeros)
+                    "unlock_time": 0,
+                    "amount": int(amount * 1e12),
                     "address": str(destination)
                 }],
                 "subaddr_indices": [int(subaddr_index)],
@@ -102,6 +103,8 @@ class WalletRPC:
         except requests.exceptions.RequestException as e:
             # Handle network/HTTP errors
             raise ConnectionError(f"Request failed: {str(e)}")
+
+
 
 # Example usage:
 # rpc = WalletRPC()
